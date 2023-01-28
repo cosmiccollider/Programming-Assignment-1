@@ -48,7 +48,7 @@ public class hw1
         
         // execution time
         long finish = System.nanoTime();
-        double timeInSeconds = (double) (finish-start) / 1000000000;
+        double time = (double) (finish-start);
         
         // # of prime numbers and their summations
         long total = 0, sum = 0;
@@ -58,7 +58,7 @@ public class hw1
         for(int i = 0; i < 8; i++)  // adds the sum of prime numbers each thread found
             sum += threadArr[i].sumPrime;
         
-        String msg = "<"+timeInSeconds+" seconds> " + "<"+total+" # of prime numbers> "+ "<"+sum+" sum of prime #'s> ";
+        String msg = "<"+time+"> " + "<"+total+"> "+ "<"+sum+"> ";
         file.writeFile(msg,myWriter);
 
         
@@ -68,16 +68,11 @@ public class hw1
         for(int z = 0; z < 10; z++) // adds max prime numbers to txt file
         {
             if(z == 9)
-                tmp = tmp + maxList[z] + ", maximum primes listed in order from lowest to highest>";
+                tmp = tmp + maxList[z] + ">";
             else
                 tmp = tmp + maxList[z] + ", ";
         }
         file.writeFile(tmp,myWriter);
-        long finish2 = System.nanoTime();
-        double timeInSeconds2 = (double) (finish2-start) / 1000000000;
-        System.out.println("time 1: "+timeInSeconds);
-        System.out.println("time 2: "+timeInSeconds2);
-
         myWriter.close();
     }
 }
